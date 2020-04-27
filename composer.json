@@ -1,0 +1,16 @@
+{
+  "name": "tostrander/328/food3",
+  "authors": [
+    {
+      "name": "Tina Ostrander",
+      "email": "tostrander@greenriver.edu"
+    },
+    {
+      "name": "Marcus Absher",
+      "email": "mabsher@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
