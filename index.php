@@ -27,5 +27,23 @@ $f3->route('GET /breakfast', function() {
 
 });
 
+//Breakfast / green eggs & ham route
+$f3->route('GET /breakfast/green-eggs', function() {
+    //echo '<h1>Welcome to my Breakfast Page</h1>';
+
+    $view = new Template();
+    echo $view->render('views/greenEggsAndHam.html');
+
+});
+
+//Reuben route
+$f3->route('GET /lunch/sandwiches/reuben', function() {
+    //echo '<h1>Welcome to my Breakfast Page</h1>';
+
+    $view = new Template();
+    echo $view->render('views/reuben.html');
+
+});
+
 //Run F3
 $f3->run();
