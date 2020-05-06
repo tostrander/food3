@@ -69,14 +69,42 @@ $f3->route('GET|POST /order', function($f3) {
             $_SESSION['meal'] = $_POST['meal'];
 
             //Redirect to summary page
-            $f3->reroute('summary');
-            session_destroy();
+            $f3->reroute('order2');
         }
     }
 
     $f3->set('meals', $meals);
     $view = new Template();
     echo $view->render('views/orderForm.html');
+
+});
+
+//Order route
+$f3->route('GET|POST /order2', function($f3) {
+
+    $conds = getCondiments();
+
+    //If the form has been submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Validate the data
+        if (false) {
+            echo "<p>Error</p>";
+        }
+        //Data is valid
+        else {
+            //Store the data in the session array
+            $_SESSION['conds'] = $_POST['conds'];
+
+            //Redirect to summary page
+            $f3->reroute('summary');
+            session_destroy();
+        }
+    }
+
+    $f3->set('conds', $conds);
+    $view = new Template();
+    echo $view->render('views/orderForm2.html');
 
 });
 

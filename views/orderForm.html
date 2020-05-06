@@ -24,15 +24,18 @@
                 <label class="col-sm-2 control-label">Select a meal</label>
                 <div class="col-sm-4">
                     <repeat group="{{ @meals }}" value="{{ @meal }}">
-                        <input type="radio" name="meal" id="{{ @meal }}" value="{{ @meal }}"> {{ ucfirst(@meal) }}
-                        </input><br>
+                        <label><input type="radio"
+                                      name="meal"
+                                      id="{{ @meal }}"
+                                      value="{{ @meal }}"> {{ ucfirst(@meal) }}
+                        </input></label><br>
                     </repeat>
                 </div>
             </div>
 
             <div class="col-xs-3 ">
                 <input class="form-control btn btn-default"
-                       type="submit" value="Place Order">
+                       type="submit" value="Next">
             </div>
         </form>
     </div>

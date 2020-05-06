@@ -11,3 +11,13 @@
         $meals = array("breakfast", "lunch", "dinner");
         return $meals;
     }
+
+    /* getCondiments()
+    * Returns an array of condiments
+    * @return array
+    */
+    function getCondiments()
+    {
+        $conds = array("mayonnaise", "ketchup", "mustard", "sriracha");
+        return $conds;
+    }
