@@ -68,7 +68,7 @@ $f3->route('GET|POST /order', function($f3) {
             $_SESSION['food'] = $_POST['food'];
             $_SESSION['meal'] = $_POST['meal'];
 
-            //Redirect to summary page
+            //Redirect to Order 2 page
             $f3->reroute('order2');
         }
     }
@@ -87,25 +87,16 @@ $f3->route('GET|POST /order2', function($f3) {
     //If the form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //Validate the data
-        if (false) {
-            echo "<p>Error</p>";
-        }
-        //Data is valid
-        else {
-            //Store the data in the session array
-            $_SESSION['conds'] = $_POST['conds'];
+        //Store the data in the session array
+        $_SESSION['conds'] = $_POST['conds'];
 
-            //Redirect to summary page
-            $f3->reroute('summary');
-            session_destroy();
-        }
+        //Redirect to summary page
+        $f3->reroute('summary');
     }
 
     $f3->set('conds', $conds);
     $view = new Template();
     echo $view->render('views/orderForm2.html');
-
 });
 
 //Breakfast route
@@ -115,6 +106,7 @@ $f3->route('GET /summary', function() {
     $view = new Template();
     echo $view->render('views/summary.html');
 
+    session_destroy();
 });
 
 //Run F3
