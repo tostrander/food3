@@ -9,6 +9,7 @@ session_start();
 
 //Require the autoload file
 require_once("vendor/autoload.php");
+require_once("model/data-layer.php");
 
 //Instantiate the F3 Base class
 $f3 = Base::instance();
@@ -50,13 +51,14 @@ $f3->route('GET /lunch/sandwiches/reuben', function() {
 //Order route
 $f3->route('GET|POST /order', function($f3) {
 
+    $meals = getMeals();
+
     //If the form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         var_dump($_POST);
         //["food"]=>"tacos" ["meal"]=>"lunch"
 
         //Validate the data
-        $meals = array("breakfast", "lunch", "dinner");
         if (empty($_POST['food']) || !in_array($_POST['meal'], $meals)) {
             echo "<p>Please enter a food and select a meal</p>";
         }
@@ -72,9 +74,7 @@ $f3->route('GET|POST /order', function($f3) {
         }
     }
 
-    $meals = array("breakfast", "lunch", "dinner");
     $f3->set('meals', $meals);
-
     $view = new Template();
     echo $view->render('views/orderForm.html');
 
